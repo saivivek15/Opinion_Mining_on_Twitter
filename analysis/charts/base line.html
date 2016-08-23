@@ -1,0 +1,90 @@
+<html>
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Sentiment Analysis</title>
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <script src="../amcharts/amcharts.js" type="text/javascript"></script>
+        <script src="../amcharts/serial.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+		
+        var chart1;
+        var chart2;
+
+        makeCharts("light", "#FFFFFF");
+        function makeCharts(theme, bgColor, bgImage){
+
+            if(chart1){
+                chart1.clear();
+            }
+            if(chart2){
+                chart2.clear();
+            }
+
+            // background
+            if(document.body){
+                document.body.style.backgroundColor = bgColor;
+                document.body.style.backgroundImage = "url(" + bgImage + ")";
+            }
+
+            // column chart
+            chart1 = AmCharts.makeChart("chartdiv1", {
+                type: "serial",
+                theme:theme,
+                dataProvider: [{
+                    "method": "positve",
+                        "percentage": 56.74,
+                        "expenses": 23.9
+                },
+				{
+                    "method": "negative",
+                        "percentage": 43.26,
+                        "expenses": 23.9
+                }
+				
+                ],
+                categoryField: "method",
+                startDuration: 1,
+
+                categoryAxis: {
+                    gridPosition: "start"
+                },
+                valueAxes: [{
+                    title: "Scale"
+                }],
+                graphs: [{
+                    type: "column",
+                    title: "Percentage",
+                    valueField: "percentage",
+                    lineAlpha: 10,
+                    fillAlphas: 2.0,
+                    balloonText: "[[title]] in [[category]]:<b>[[value]]</b>"
+                }, {
+                    type: "line",
+                    valueField: "expenses",
+                    lineThickness: 0,
+                    fillAlphas: 0,
+                }],
+                legend: {
+                    useGraphSettings: true
+                }
+
+            });
+
+            
+
+        }
+
+
+        </script>
+    </head>
+
+    <body style="font-size:15px;">
+		<div>
+		<p><b>"Base Line on iPhone 6"</b><p></div>
+        <div id="chartdiv1" style="width: 300px; height: 500px;">
+		
+    </body>
+
+</html>

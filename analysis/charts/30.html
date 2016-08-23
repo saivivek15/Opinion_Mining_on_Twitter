@@ -1,0 +1,95 @@
+<html>
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Email Author Identification </title>
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <script src="../amcharts/amcharts.js" type="text/javascript"></script>
+        <script src="../amcharts/serial.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+		
+        var chart1;
+        var chart2;
+
+        makeCharts("light", "#FFFFFF");
+        function makeCharts(theme, bgColor, bgImage){
+
+            if(chart1){
+                chart1.clear();
+            }
+            if(chart2){
+                chart2.clear();
+            }
+
+            // background
+            if(document.body){
+                document.body.style.backgroundColor = bgColor;
+                document.body.style.backgroundImage = "url(" + bgImage + ")";
+            }
+
+            // column chart
+            chart1 = AmCharts.makeChart("chartdiv1", {
+                type: "serial",
+                theme:theme,
+                dataProvider: [{
+                    "method": "SVM",
+                        "accuracy": 68.5,
+                        "expenses": 18.1
+                },{
+                    "method": "GTB",
+                        "accuracy": 70.4,
+                        "expenses": 18.1
+                }, {
+                    "method": "RF" ,
+                        "accuracy": 72.5,
+                        "expenses": 22.8
+                },{
+                    "method": "Voting",
+                        "accuracy": 74.9,
+                        "expenses": 18.1
+                }
+                ],
+                categoryField: "method",
+                startDuration: 1,
+
+                categoryAxis: {
+                    gridPosition: "start"
+                },
+                valueAxes: [{
+                    title: "Accuracy"
+                }],
+                graphs: [{
+                    type: "column",
+                    title: "Accuracy",
+                    valueField: "accuracy",
+                    lineAlpha: 5,
+                    fillAlphas: 2.0,
+                    balloonText: "[[title]] in [[category]]:<b>[[value]]</b>"
+                }, {
+                    type: "line",
+                    valueField: "expenses",
+                    lineThickness: 0,
+                    fillAlphas: 0,
+                }],
+                legend: {
+                    useGraphSettings: true
+                }
+
+            });
+
+            
+
+        }
+
+
+        </script>
+    </head>
+
+    <body style="font-size:15px;">
+
+        <div id="chartdiv1" style="width: 700px; height: 450px;">
+		
+    </body>
+
+</html>
