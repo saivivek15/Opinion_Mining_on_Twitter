@@ -11,22 +11,22 @@ Sentiment Analysis of Twitter
 Naive Bayes Algorithm: 
 In this method we have several variations in the training the Naïve Bayes Classifier.
 
-*Method I:
+* Method I:
 
 In this method of finding sentiment we used the set 5333 and 5332 positive and negative movie reviews provided by Cornell University.
 We used three-fourth of the data set for training and one-fourth for testing.
 
-*Method II :
+* Method II :
 
 In this method we have used same data set but trained the classifier with most frequent 10,000 Features based on their Chi-Square Score
 Χ^2(t,c) =( N∗(AD−CB)^2) / [(A+C)∗(B+D)∗(A+B)∗(C+D)]
 
-*Method III:
+* Method III:
 
 In this we trained the classifier with 10000 features extracted from the movie reviews
 and tested on Twitter data collected from http://inclass.kaggle.com/c/si650winter11/data
 
-*Method IV:
+* Method IV:
 
 In this we trained and tested with the Twitter data set previously collected. We used three-fourth for training and one-fourth for testing purposes.
 
